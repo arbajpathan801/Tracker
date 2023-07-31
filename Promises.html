@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise make and break</title>
+</head>
+<body>
+     <script>
+        const userlist= {
+            user: 'sameer',
+            updateLastUserActivityTime: '30th july 2023'
+        }
+       function createPost(newuser){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                   
+                    userlist.user=newuser;
+                    resolve(console.log(`Previous user activity Time : ${userlist.updateLastUserActivityTime}`));
+                },2000)
+            })
+        };
+       function updateLastUserActivityTime () {
+            return new Promise ((resolve, reject) =>{
+                setTimeout(() => {
+                    userlist.updateLastUserActivityTime+=new Date().getTime();
+                    resolve( userlist.updateLastUserActivityTime)
+                },2000)
+        })
+    }
+    const newuser= "yash"
+        Promise.all([createPost(newuser),updateLastUserActivityTime]).then(([createPostresolve,updateLastUserActivityTimeresolve]) => {
+            console.log(userlist.updateLastUserActivityTime,userlist.user)
+        })
+     </script>
+</body>
+</html>
