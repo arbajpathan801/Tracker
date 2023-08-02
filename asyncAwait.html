@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+    <script>
+        console.log ('Person1 : Show ticket')
+        console.log ('Person2 : Show ticket')
+        const PreMovie =async () => {
+            const PromisewifeBringinTicket=new Promise ((resolve, reject) => {
+                setTimeout(() => reject('Ticket'), 3000)
+            })
+            const getpopcorn=new Promise((resolve, rejrct) => resolve('popcorn'));
+            const AddButter=new Promise((resolve, rejrct) => resolve('butter'));
+            const getcoldDrink=new Promise ((resolve, reject) => resolve('coldDrink'))
+
+            let  ticket
+            try{
+                ticket=await PromisewifeBringinTicket;
+            } catch(m){
+                ticket ="Sad face"
+            }
+
+
+            // let [popcorn,Butter, coldDrink]= await Promise.all([getpopcorn,AddButter,getcoldDrink])
+            // console.log(`${popcorn},${Butter},${coldDrink}`)
+
+            // console.log (`Wife : i have  ${ticket}`)
+            // console.log ('Hasbnd : We should  go in')
+            // console.log ('Wife : no i am hungry')
+            
+            // let popcorn=await getpopcorn;
+            
+            // console.log (`Hasbnd : i have ${popcorn}`)
+            // console.log ('Hasbnd : We should go in')
+            // console.log ('Wife : i need butter on it')
+
+            // let Butter= await AddButter;
+
+            // console.log (`Hasbnd : i have ${Butter}`)
+            // console.log ('Hasbnd : We should go in')
+            // console.log ('Wife : i want coldDrink')
+
+            // let ColdDrink = await getcoldDrink;
+
+            // console.log (`Hasbnd : i have ${ColdDrink}`)
+            // console.log ('Hasbnd : Any thing else you want')
+            // console.log ('Wife : NO we are getting late')
+            // console.log ('Husband : Thank you to remind me lets go')
+
+            return ticket
+
+        }
+        PreMovie().then((m) => console.log(`Person3 : Show ${m}`))
+
+        
+        console.log ('Person4 : Show ticket')
+        console.log ('Person5 : Show ticket')
+
+    </script>
+    
+</body>
+</html>
